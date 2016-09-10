@@ -1,6 +1,6 @@
 {
   "name": "shadowbot-plugin-base",
   "description": "The base plugin that all ShadowBot plugins should extend",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "R4Wizard"
 }
