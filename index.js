@@ -9,6 +9,7 @@ class PluginBase extends events.EventEmitter {
 		super();
 
 		this._commands = [];
+		this._messages = [];
 	}
 
 	command(name, helptext, handler) {
@@ -16,8 +17,14 @@ class PluginBase extends events.EventEmitter {
 		Shadow.registerCommandHandler(name, helptext, handler);
 	}
 
+	message(regex, handler) {
+		this._messages.push(regex);
+		Shadow.registerMessageHandler(regex, handler);
+	}
+
 	_destroy() {
 		this._commands.forEach(cmd => Shadow.unregisterCommandHandler(cmd));
+		this._messages.forEach(msg => Shadow.unregisterMessageHandler(msg));
 		this.destroy();
 	}
 
