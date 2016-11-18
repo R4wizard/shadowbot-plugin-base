@@ -16,8 +16,13 @@ class PluginBase extends events.EventEmitter {
 		Shadow.registerCommandHandler(name, helptext, handler);
 	}
 
-	destroy() {
+	_destroy() {
 		this._commands.forEach(cmd => Shadow.unregisterCommandHandler(cmd));
+		this.destroy();
+	}
+
+	destroy() {
+
 	}
 
 }
